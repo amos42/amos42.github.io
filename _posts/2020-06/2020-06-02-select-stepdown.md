@@ -1,7 +1,7 @@
 ---
 title : 게임기 제작을 위한 Step-down 모듈 선택
-date : 2023-02-05 20:49:00 +09:00
-categories : [TOP_CATEGORIE, SUB_CATEGORIE]
+date : 2020-06-07. 11:21:00 +09:00
+categories : [DIY, GAME_MACHINE]
 tags : [DIY기술관련]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title : 라즈베리파이용 safety shutdown 회로
-date : 2023-02-05 20:57:00 +09:00
-categories : [TOP_CATEGORIE, SUB_CATEGORIE]
+date : 2020-06-02 00:03:00 +09:00
+categories : [DIY, GAME_MACHINE]
 tags : [DIY기술관련]
 ---
 
@@ -22,9 +22,7 @@ tags : [DIY기술관련]
 이런 것들음 감안해서 개인적으로 구상한 회로는 다음과 같다.
 몇가지 모듈들을 배치해서 단순하게 결선만 하면 된다.
 
-![]({{site.url}}/2023-02/2023-02-05-safety-shutdown-make/001.png)
-
-![]({{"2023-02/2023-02-05-safety-shutdown-make/001.png" | relative_url}})
+![](https://raw.githubusercontent.com/amos42/amos42.github.io/master/_posts/2020-06/2020-06-03-safety-shutdown-make/001.png)
 
 이런 종류의 스위칭 회로를 만들 때 가장 고민되는 것 중 하나가...
 바로 mosfet을 쓸 것인가 relay를 쓸 것인가이다.
@@ -43,7 +41,7 @@ tags : [DIY기술관련]
 일반적으로 많이 쓰는 릴레이는 5V 기준으로 72mA 정도를 소모한다.
 (흔하게 구할 수 있는 DIY용 릴레이 모듈은 대부분 이런 릴레이를 사용한다.)
 
-![](https://raw.githubusercontent.com/amos42/amos42.github.io/master/_posts/2023-02-05/2023-02-05-safety-shutdown-make/002.png)
+![](https://raw.githubusercontent.com/amos42/amos42.github.io/master/_posts/2020-06/2020-06-03-safety-shutdown-make/002.png)
 
 모스펫의 경우엔 3% 정도 손실이 있다고 가정한다면 12W 전원을 기준으로 할 때, 약 70~80mA 정도가 소모된다.
 12W 정도에선 둘 사이의 차이가 아주 크진 않다.
@@ -62,22 +60,22 @@ tags : [DIY기술관련]
 정류 다이오드를 통과해서 감압모듈로 전원이 들어가면, 감압모듈을 통해 라즈베리파이와 릴레이에 5V가 공급 될 것이다.
 하지만 아직 릴레이에 active 신호가 오지 않은 상태이기 때문에 릴레이는 꺼져 있는 상태다.
 
-![](https://raw.githubusercontent.com/amos42/amos42.github.io/master/_posts/2023-02-05/2023-02-05-safety-shutdown-make/003.png)
+![](https://raw.githubusercontent.com/amos42/amos42.github.io/master/_posts/2020-06/2020-06-03-safety-shutdown-make/003.png)
 
 5V 전원이 들어왔으니, 라즈베리파이는 부팅 작업을 시작한다.
 이때 아직 전원 스위치에서 손을 떼면 안 된다.
 
-![](https://raw.githubusercontent.com/amos42/amos42.github.io/master/_posts/2023-02-05/2023-02-05-safety-shutdown-make/004.png)
+![](https://raw.githubusercontent.com/amos42/amos42.github.io/master/_posts/2020-06/2020-06-03-safety-shutdown-make/004.png)
 
 부팅 절차가 일정 부분 진행되면 설정에 따라 라즈베리파이의 gpio 핀 중 일부가 활성화 된다.
 그럼 그 핀의 출력이 릴레이를 active 상태로 만들어 준다.
 
-![](https://raw.githubusercontent.com/amos42/amos42.github.io/master/_posts/2023-02-05/2023-02-05-safety-shutdown-make/005.png)
+![](https://raw.githubusercontent.com/amos42/amos42.github.io/master/_posts/2020-06/2020-06-03-safety-shutdown-make/005.png)
 
 일단 릴레이가 켜졌다면, 이제 전원 스위치에서 손을 떼도 된다.
 스위치에서 손을 떼도 여전히 전원 공급은 끊기지 않고 동작을 지속하게 된다.
 
-![](https://raw.githubusercontent.com/amos42/amos42.github.io/master/_posts/2023-02-05/2023-02-05-safety-shutdown-make/006.png)
+![](https://raw.githubusercontent.com/amos42/amos42.github.io/master/_posts/2020-06/2020-06-03-safety-shutdown-make/006.png)
 
 이로써 부팅 절차는 완료되었다.
 이 상태에서 릴레이에서 일정량의 전원이 꾸준히 소모되고 있다는 것을 염두에 둬야 한다.
@@ -89,19 +87,19 @@ tags : [DIY기술관련]
 전원 스위치를 다시 한번 눌러 준다.
 그럼 발생한 12V 전압이 적절히 저항을 통해 3.3V로 감압되어 라즈베리파이의 종료 스위치를 켜주게 된다.
 
-![](https://raw.githubusercontent.com/amos42/amos42.github.io/master/_posts/2023-02-05/2023-02-05-safety-shutdown-make/007.png)
+![](https://raw.githubusercontent.com/amos42/amos42.github.io/master/_posts/2020-06/2020-06-03-safety-shutdown-make/007.png)
 
 종료핀이 감지되면 라즈베리파이는 shutdown 작업을 진행하게 된다.
 
-![](https://raw.githubusercontent.com/amos42/amos42.github.io/master/_posts/2023-02-05/2023-02-05-safety-shutdown-make/008.png)
+![](https://raw.githubusercontent.com/amos42/amos42.github.io/master/_posts/2020-06/2020-06-03-safety-shutdown-make/008.png)
 
 샷다운 과정이 무사히 끝나면, 이제 GPIO의 릴레이 스위치 핀이 비활성화 된다.
 
-![](https://raw.githubusercontent.com/amos42/amos42.github.io/master/_posts/2023-02-05/2023-02-05-safety-shutdown-make/009.png)
+![](https://raw.githubusercontent.com/amos42/amos42.github.io/master/_posts/2020-06/2020-06-03-safety-shutdown-make/009.png)
 
 그럼 릴레이가 꺼지고, 12V로부터 오던 전원이 차단되어 완전히 전원이 꺼지게 된다.
 
-![](https://raw.githubusercontent.com/amos42/amos42.github.io/master/_posts/2023-02-05/2023-02-05-safety-shutdown-make/010.png)
+![](https://raw.githubusercontent.com/amos42/amos42.github.io/master/_posts/2020-06/2020-06-03-safety-shutdown-make/010.png)
 
 12V 입력을 3.3V 신호선으로 변환하는 것은 저항비를 이용하면 간단히 가능하다.
 단, 정확히 12V가 아니라 12.6V 정도까지도 들어오기 때문에 저항비도 어느 정도 여유를 두는 편이 좋다.
@@ -109,7 +107,7 @@ tags : [DIY기술관련]
 
 실제 이를 구현한 모습이다. 생각보다 간단하다. 
 
-![](https://raw.githubusercontent.com/amos42/amos42.github.io/master/_posts/2023-02-05/2023-02-05-safety-shutdown-make/011.png)
+![](https://raw.githubusercontent.com/amos42/amos42.github.io/master/_posts/2020-06/2020-06-03-safety-shutdown-make/011.png)
 
 이제 라즈베리파이 쪽 설정을 해 줄 차례이다.
 
