@@ -22,7 +22,9 @@ tags : [DIY기술관련]
 이런 것들음 감안해서 개인적으로 구상한 회로는 다음과 같다.
 몇가지 모듈들을 배치해서 단순하게 결선만 하면 된다.
 
-![](https://raw.githubusercontent.com/amos42/amos42.github.io/master/_posts/2023-02-05/2023-02-05-safety-shutdown-make/001.png)
+![]({{site.url}}/2023-02/2023-02-05-safety-shutdown-make/001.png)
+
+![]({{"2023-02/2023-02-05-safety-shutdown-make/001.png" | relative_url}})
 
 이런 종류의 스위칭 회로를 만들 때 가장 고민되는 것 중 하나가...
 바로 mosfet을 쓸 것인가 relay를 쓸 것인가이다.
